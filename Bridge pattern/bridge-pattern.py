@@ -2,7 +2,7 @@
 # into two separate hierarchies (abstraction and implementation) which can be developed independently of each other
 
 # Elements of bridge design pattern:
-# - Abstraction: It is the core of the bridge design pattern and it provides the reference ot the implementer.
+# - Abstraction: It is the core of the bridge design pattern and it provides the reference of the implementer.
 # - Refined abstraction: It extends the abstraction to a new level where it takes the finer details one level above and hides the finer element from the implementers.
 # - Implementer: It defines the interface for implementation classes. The interface does not need to correspond directly to the abstraction interface and can be very different.
 # - Concrete implementer: Through the concrete implementation, it implements the above implementer.

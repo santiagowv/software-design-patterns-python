@@ -25,7 +25,7 @@ class Coinbase(Exchange): # refined abstraction
 
 
 class TradingBot(ABC): # implementer
-    def _init__(self, exchange: Exchange):
+    def __init__(self, exchange: Exchange):
         self.exchange = exchange
 
     def check_prices(self, coin:str):
@@ -46,7 +46,7 @@ class TradingBot(ABC): # implementer
         pass
 
     @abstractmethod
-    def should_sell(self, pirces: list[float]) -> bool:
+    def should_sell(self, prices: list[float]) -> bool:
         pass
 
 class AverageTrader(TradingBot): # concrete implementer
