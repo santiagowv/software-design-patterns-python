@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Exchange(ABC): # abstraction
+class Exchange(ABC): # implementer
     @abstractmethod
     def connect(self):
         pass
@@ -9,14 +9,14 @@ class Exchange(ABC): # abstraction
     def get_market_data(self, coin:str) -> list[float]:
         pass
 
-class Binance(Exchange): # refined abstraction
+class Binance(Exchange): # concrete implementer
     def connect(self):
         print(f"Connecting to Binance exchange...")
 
     def get_market_data(self, coin: str) -> list[float]:
         return [10, 12, 18, 14]
 
-class Coinbase(Exchange): # refined abstraction
+class Coinbase(Exchange): # concrete implementer
     def connect(self):
         print(f"Connecting to Coinbase exchange...")
 
@@ -24,7 +24,7 @@ class Coinbase(Exchange): # refined abstraction
         return [10, 12, 18, 20]
 
 
-class TradingBot(ABC): # implementer
+class TradingBot(ABC): # abstraction
     def __init__(self, exchange: Exchange):
         self.exchange = exchange
 
@@ -49,7 +49,7 @@ class TradingBot(ABC): # implementer
     def should_sell(self, prices: list[float]) -> bool:
         pass
 
-class AverageTrader(TradingBot): # concrete implementer
+class AverageTrader(TradingBot): # refined abstraction 
     def list_average(self, l: list[float]) -> float:
         return sum(l) / len(l)
 
@@ -59,7 +59,7 @@ class AverageTrader(TradingBot): # concrete implementer
     def should_sell(self, prices: list[float]) -> bool:
         return prices[-1] > self.list_average(prices)
 
-class MinMaxTrader(TradingBot): # concrete implementer
+class MinMaxTrader(TradingBot): # refined abstraction 
 
     def should_buy(self, prices: list[float]) -> bool:
         return prices[-1] == min(prices)
